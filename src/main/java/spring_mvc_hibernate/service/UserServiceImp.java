@@ -1,6 +1,5 @@
 package spring_mvc_hibernate.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spring_mvc_hibernate.dao.UserDao;
@@ -8,39 +7,45 @@ import spring_mvc_hibernate.model.User;
 
 import java.util.List;
 
+
 @Service
 public class UserServiceImp implements UserService {
 
-    @Autowired
-    private UserDao userDao;
+    private final UserDao userDao;
 
-    @Transactional
-    @Override
-    public void addUser(User user) {
-        userDao.addUser(user);
+    public UserServiceImp(UserDao userDao) {
+        this.userDao = userDao;
     }
 
+    @Override
     @Transactional(readOnly = true)
-    @Override
-    public List<User> getUsers() {
-        return userDao.getUsers();
+    public List<User> getAllUser() {
+        return userDao.getAllUser();
     }
 
-    @Transactional
     @Override
-    public User getUser(int id) {
-        return userDao.getUser(id);
+    @Transactional
+    public void add(User user) {
+        userDao.add(user);
     }
 
-    @Transactional
     @Override
+    @Transactional(readOnly = true)
+    public User getUserById(Long id) {
+        return userDao.getUserById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUserById(Long id) {
+        userDao.deleteUserById(id);
+    }
+
+    @Override
+    @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
 
-    @Transactional
-    @Override
-    public void deleteUser(int id) {
-        userDao.deleteUser(id);
-    }
+
 }

@@ -5,13 +5,16 @@ import spring_mvc_hibernate.model.User;
 import java.util.List;
 
 public interface UserService {
-    void addUser(User user);
 
-    List<User> getUsers();
+    List<User> getAllUser();
 
-    User getUser(int id);
+    void add(User user);
+
+    User getUserById(Long id);
+
+    void deleteUserById(Long id);
 
     void updateUser(User user);
 
-    void deleteUser(int id);
+
 }
