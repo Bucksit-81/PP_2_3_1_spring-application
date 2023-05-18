@@ -1,7 +1,13 @@
 package spring_mvc_hibernate.model;
 
+//import javax.persistence.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -9,21 +15,21 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name = "age")
-    int age;
+    private Integer age;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     public User() {
     }
 
-    public User(String name, int age, String email) {
+    public User(String name, Integer age, String email) {
         this.name = name;
         this.age = age;
         this.email = email;
@@ -45,11 +51,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
