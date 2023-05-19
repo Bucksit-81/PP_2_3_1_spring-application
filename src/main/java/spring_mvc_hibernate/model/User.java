@@ -1,45 +1,42 @@
 package spring_mvc_hibernate.model;
 
-//import javax.persistence.*;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "surname")
+    private String surname;
 
     @Column(name = "email")
     private String email;
 
+    @Column(name = "age")
+    private Integer age;
+
     public User() {
     }
 
-    public User(String name, Integer age, String email) {
+    public User(String name, String surname, String email, Integer age) {
         this.name = name;
-        this.age = age;
+        this.surname = surname;
         this.email = email;
+        this.age = age;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -51,12 +48,12 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {
@@ -65,5 +62,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

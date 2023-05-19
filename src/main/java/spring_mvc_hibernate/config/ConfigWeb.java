@@ -1,4 +1,5 @@
 package spring_mvc_hibernate.config;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,11 +14,11 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("spring_mvc_hibernate")
-public class WebConfig implements WebMvcConfigurer {
+public class ConfigWeb implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
-    public WebConfig(ApplicationContext applicationContext) {
+    public ConfigWeb(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
@@ -26,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/pages/");
+        templateResolver.setPrefix("/WEB-INF/view/");
         templateResolver.setSuffix(".html");
         templateResolver.setCharacterEncoding("UTF-8");
         return templateResolver;

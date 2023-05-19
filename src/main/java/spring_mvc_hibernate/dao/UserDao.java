@@ -5,16 +5,15 @@ import spring_mvc_hibernate.model.User;
 import java.util.List;
 
 public interface UserDao {
-    List<User> getAllUser();
 
-    void add(User user);
+    List<User> getUsers();
 
-    User getUserById(Long id);
+    void deleteUserById(long id);
 
-    void deleteUserById(Long id);
+    void addUser(User user);
 
-    void updateUser(User user);
-
+    void editUser(User user);
 
 
+    User getUserById(long id);
 }
